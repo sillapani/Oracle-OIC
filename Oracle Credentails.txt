@@ -1,0 +1,116 @@
+Oracle Training:
+
+OIC Instance:
+https://cloud1-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+oicdit1
+CloudOne321$
+CloudOne321$
+
+https://cloud2-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+https://cloud5-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+
+Use above instance and your own username, received in your gmail
+
+While resetting the password, set it to: CloudOne321$
+
+CloudOne321$
+
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+tSp9g#8?
+
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com/fscmService/SupplierServiceV2?WSDL
+
+
+https://us02st1.zoom.us/web_client/umlcpk/html/externalLinkPage.html?ref=https://www.oracle.com/middleware/technologies/soasuite/downloads.html
+
+https://www.oracle.com/middleware/technologies/soasuite/downloads.html
+
+https://fa-etap-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+pRa3R#4^
+
+
+https://fa-etas-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+kND8j^8%
+
+
+https://fa-etaq-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+kND8j^8%
+
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+tSp9g#8?
+
+
+
+
+
+
+
+FTP Details:
+
+Server   : ftp.drivehq.com
+Port     : 21
+Username : bftp1
+Password : CloudFtp123
+
+/PaWaN/ill/in/order
+/PaWaN/ill/out/order
+
+/deltaoic/YY/IN/order
+
+9182276715
+/deltaoic/ill/out/Assign
+
+
+7799445835
+
+
+
+
+Instance : cloud5
+Assessment Name : 
+illCreateFusionSupplierAneInt ,  
+illwriteSuppliersToFtp
+ 
+ 
+ 
+ 
+ 7989190750
+ 
+ 
+ 
+ Here is the instance info for fusion fin:
+
+https://fa-eqjn-dev10-saasfademo1.ds-fa.oraclepdemos.com/
+FIN_IMPL
+hBX5c?3#
+
+https://fa-eqng-dev11-saasfademo1.ds-fa.oraclepdemos.com/
+FIN_IMPL
+tKV6E?5#
+
+https://fa-esec-dev12-saasfademo1.ds-fa.oraclepdemos.com/
+FIN_IMPL
+cLi8w#8%
+
+New Trainer : 
+
+
+    
+https://fa-etan-saasfademo1.ds-fa.oraclepdemos.com/
+FIN_IMPL
+tUr6L?3?
+
+
+https://fa-etas-saasfademo1.ds-fa.oraclepdemos.com/
+FIN_IMPL
+kND8j^8%
+
+
+https://fa-etat-saasfademo1.ds-fa.oraclepdemos.com/
+FIN_IMPL
+xPH3R*7%
