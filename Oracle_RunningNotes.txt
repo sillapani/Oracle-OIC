@@ -1,0 +1,1293 @@
+Oracle Integration Cloud & Fusion tech
+--------------------------------------
+
+Enterprise
+	ERP
+	3rd party applications
+	
+app1
+
+app2
+
+app3
+
+
+Basic of Integrations
+
+OIC -> Not about Fusion Apps
+Generic technology
+Integrations
+
+Fusion Technology
+	FBDI
+	Reporting
+	Workflows
+	UCM
+	Schedule process
+	
+
+Integration with Fusion Apps
+
+Related technologies
+vbcs
+apex
+soa
+
+
+TIBCO
+3rd pary apis
+	pl/sql is calling a web services (soap)
+File based transfer
+REST/SOAP/ HTTPS integrations
+java -> invoke webservice
+
+
+Webservice
+	can invoke from any technology
+	technology independent
+	functionality is exposed as URL
+	
+XML, RPC
+webapp development
+
+
+client 			HTTP				server (webservice)
+
+
+
+browser (UI)	HTTP		Middleware(Web server)			Backend (db, webservice)
+							  Business components
+
+	
+
+-----------------------------------------------------------
+SOAP/REST
+
+Fusion Apps -> Oracle SaaS -> Oracle cloud
+Webservices
+	SOAP/REST
+	
+Onpremises -> complete access
+
+------------------------------------------------------------
+REST / SOAP
+
+Greetings Integration
+	Expose as REST
+	i/p: name
+	o/p: Hello <name>, Greetings from OIC
+	
+Connections
+	invoke -> invoke an external service/application/technology
+		invoking Helloworld 
+	trigger -> you will have max 1 trigger connection
+		expose as rest
+	
+	
+scheduled integrations 
+
+
+Helloworld SOAP web service 
+Existing service
+i/p: name
+o/p: Hello <name>
+
+abc(number a, number b) returns number
+
+
+json
+
+
+String helloworld(String name)
+
+
+
+String greetings(String gname)
+{
+
+
+String ret = helloworld(gname);
+ret = ret + ",Greetings from OIC";
+
+return ret;
+
+
+}
+
+
+String greetings(String gname, String a1)
+{
+
+
+String ret = helloworld(gname);
+ret = ret + ",Greetings from OIC";
+
+return ret;
+
+
+}
+
+
+https://cloud1-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+oicdit1
+CloudOne321$
+
+-------------------------------------------------------------------------
+Agenda
+
+XML/XSD/WSDL
+JSON, REST
+
+Payload
+WS -> service(server), client
+
+SOAP web service
+	payload has to be XML
+
+REST
+	it can be XML/JSON/CSV/
+
+XSD
+	XML Schema Definition
+	define a specific structure of an XML Type
+
+
+------------------------------------------------------
+SOAP/WSDL
+
+SOAP webservice
+	payload has to be XML
+	service provider has to publish the specification of the webservice using a standard XML file called WSDL
+	SOAP Envelope
+	HTTP, FTP
+	web service level - security
+
+REST
+	not many strict rules
+	payload can be any structure (JSON/XML/CSV/Text)
+	HTTP
+	HTTP security
+
+Oracle Apex
+	ORDS
+
+serverless computing
+
+
+REST Webservices
+-----------------
+REST API
+REST Endpoint (the is the complete URL of the web service)
+resource URI path
+	relative path to refer a specific operation
+operation type
+
+GET 
+	get one/multiple or all the elements of something
+	
+	get one/multiple 
+	i/p: request param (query param / template param)
+		delivered as part of the URL
+		
+	get all
+	i/p: no input
+	
+	o/p: complex structure
+		delivered as part of the body
+
+POST 
+	creating a new element / send some large input
+	create an employee
+	
+	i/p: complex structure
+		delivered as part of the body
+		optional: request param (query param / template param)
+		
+	o/p: complex structure / no output
+		delivered as part of the body
+
+PUT
+	updating one or multiple elements
+	update employee with a different location
+	
+	i/p: request param (query param / template param)
+		 optionally: complex structure
+	
+	o/p: complex structure / no output
+		delivered as part of the body
+
+DELETE
+
+	deleting one/multiple or all elements
+
+	delete one/multiple 
+	i/p: request param (query param / template param)
+		delivered as part of the URL
+		
+	delete all
+	i/p: no input
+	
+	o/p: complex structure / no output
+	delivered as part of the body
+
+-----------------------------------------------------------------
+
+ValidateCC
+(REST)
+i/p: ccnumber
+o/p: VALID/INVALID
+
+
+Connections
+	Trigger - REST
+	Invoke - No
+
+
+
+
+a + b > 100
+
+a < 100
+sum(a,b,c) 
+
+a := 'VALID'
+
+Map
+Assign
+Datastich
+
+-----------------------------------------
+
+PO Processing
+(REST)
+i/p: po.json
+o/p: po.json
+
+Connections
+	Trigger - REST
+	Invoke - REST
+	
+
+https://cloud1-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+oicdit1
+	
+
+------------------------------------------------------------------------------------
+1st July
+How to create a new REST using OIC?
+How to invoke REST service using OIC?
+
+How to create a SOAP service using OIC
+How to invoke SOAP service using OIC
+
+1. Integrations PO Processing
+	i/p: po.xml
+	o/p: no output
+	Result: generate a file on FTP with the processed Order
+	
+Expose as SOAP
+
+Connections
+	Trigger - SOAP
+		You need to create WSDL - this will not come from service
+		
+	Invoke - POProcessing REST - not creating
+	Invoke an existing integration as integration
+		this is possible when both the integrations are on the instance
+	Inokve - FTP
+
+
+what is the differnce between basic authentication vs usernametoken password authentication
+
+server: ftp.drivehq.com
+Port: 21
+username/password: bftp1/CloudFtp123
+
+
+https://cloud2-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/ws/integration/v1/flows/soap/BITPOPROCESSINGSOAPINTG/1.0/?wsdl
+
+order_100.json
+
+
+concat('order_',/nssrcmpr:PurchaseOrder/nssrcmpr:ID,'.json)
+
+
+/deltaoic/bit/in
+/deltaoic/bit/out/order
+
+input file name: order.csv
+
+---------------------
+2nd July 2021
+
+-> Process orders of a csv file . CSV file may contain multiple orders
+Expose REST
+i/p:
+request param
+	filename
+o/p: no output
+GET/POST
+
+/deltaoic/bit/in/ordercsv
+
+
+Steps:
+
+
+-> Process multiple files - each file contain multiple orders
+FTP - List files
+	list of files - collection
+	
+	loop on that collection
+		handler to the current file
+		file -> input to the 
+		
+
+/deltaoic/uda/out/order
+/deltaoic/uda/out/order
+
+-----------------------------------------------------------
+For loop
+process multiple orders of one file
+process multiples files with multiple orders
+
+
+Zip file -> List of csv files -> list of orders -> input
+Generate a zip file -> list of json files (processed order)
+
+REST
+	dirname
+	filename
+	
+	zipoutdir
+	
+download the zip file - unzip
+	/bitzipfile
+iterate over the csv files
+	read csv file 
+	iterate over the orders
+		process each order - invoking po processing
+		write the processed order to a folder using stage file
+			/bitjsonfiles
+			
+	end for loop	
+
+end for loop
+
+zip all the json files (/bitjsonfiles) using stage 
+	i/p: which dir that u want to zip
+	o/p: where do u want to place ('/bitjsonzip')
+	
+FTP - write the zip file to ftp
+	
+
+single csv file   - one/multiple record
+download file
+stage file read
+
+list files
+	list files
+	iterate on list of files
+		download file
+			stage file
+
+OIC (Oracle Integration Cloud)
+	ICS (Integration Cloud Service)
+	PCS (Process Cloud Service)
+	VBCS (Visual Builder Cloud Service)
+
+
+/bitzipfile
+/bitjsonfiles
+
+6th July 2021
+--------------------------------------------
+
+app driven orchestration
+scheduled orchestraion
+expose integrations as soap/rest
+FTP adapter
+Stage file
+Map
+
+invoke soap/rest
+invoke integration
+
+assign activity
+switch
+	nested
+for each - loop
+	nested
+	
+
+Data Stitch and Global Variables
+
+List files
+	process a list of files available on ftp folder
+		list of orders
+	generating one separate json file for each order processed
+	
+Process list of files - generate one single file for each csv
+
+
+Global variables
+	supports complex types
+	retain the values/data generated in the inner scopes to outer scopes
+
+Data stitch
+	assining values to variables
+	appending an element to a list(collection)
+	deleting an element from a list(collection)
+	Usually we go for data stitch only when map is not possible
+	
+Assign
+	supports only string type
+	
+Map
+	assign values to variables
+	target object is fixed - has to be based on an invoke
+		can't use Map to assign values to a global variable
+	
+
+Declaring a variable
+assigning values to variables
+
+------------------------------------------
+7th July
+Practice (assignment)
+	zip of csv files
+	process all the csv files - multiple orders
+	generate one xml for each csv files
+	zip xml files
+	write zip of xml to ftp
+
+Orchestration
+	Logger, Note, Notification, Wait
+	Create schedules on scheduled orchestration
+	
+publish/subscribe
+	
+Logger
+	this for custom logging into the trace file
+Note
+	adding a comment
+	does not have any impact on the execution
+
+Notification	
+	used for sending email notifications
+	
+	
+Synchronous
+	input
+	output
+client of a synschronous service
+	will wait until receives the response before going to next step
+
+Asynchronous -> One way
+	input
+	no output
+client of a asynschronous service
+	will not wait for the response, it will trigger and continue to next step without waiting for the response
+	
+	
+iCal schedule
+https://docs.oracle.com/en/cloud/paas/integration-cloud/integrations-user/creating-scheduled-integrations.html#GUID-9632A5C8-98A7-4371-B542-6A8583427C8D	
+	
+	
+Assignment (Schedule):
+Use list files integration - which is going to process list of files on a specific folder
+Try to use a scheduled params - and check if the value updated in one run is remembered for the next run
+
+
+db table
+records
+1
+2
+3
+4
+5
+6
+7
+8
+
+9
+10
+11
+12
+13
+14
+
+Question:
+configured a schedule to run every 30min
+run1 -> 11.00  -> 11.02
+run2 -> 11.30  -> 11.35
+run3 -> 12.00  -> 35min
+run4 -> 12.30 	
+	
+by scheduled param
+	
+
+
+
+{
+  "orderId" : 100,
+  "prodName" : "lenovo",
+  "count" : 6,
+  "price" : 600.1,
+  "orderStatus" : "test"
+}
+
+---------------------------------------------------------------------
+8th July
+
+Publisher / Subscriber mechanism
+	message driven communication
+	one way
+	fire and forget
+	losely coupled
+	event
+	
+party1
+party2
+webservice
+
+client 		service
+
+JMS
+SOA EDN
+
+Order processing
+low inventory -> product 1245
+
+25
+
+10 below 
+
+
+HRMS
+	new emp
+
+IT App
+	listen to that
+
+Facilities App
+	listen to that
+underlying platform
+
+hrms - new employee (publisher)
+	it app
+	facilitie app
+	
+	
+Integration -> hrms app
+	rest -> one way
+	i/p: employee 
+	process the employee
+	invoke the publisher (new employee publisher)
+	
+Integration -> IT App
+	rest -> one way
+	i/p: employee
+	write this employee to ftp
+	file name pattern: itemp%SEQ%.json
+	
+Integration -> Facilities App
+	rest -> one way
+	i/p: employee
+	write this employee to ftp	
+	file name pattern: facilitiesemp%SEQ%.json
+
+publisher (new employee publisher)
+	(exposed as REST)
+	i/p: employee
+	publish the employee
+
+Subscriber for IT App (sub1)
+	subscribed to new employee publisher
+	invoke IT App by sending the employee received from the message
+
+Subscriber for Facilities App (sub2)
+	subscribed to new employee publisher
+	invoke Facilities App by sending the employee received from the message
+	
+Subscriber for x App (sub3)
+	subscribed to new employee publisher
+	invoke x App by sending the employee received from the message
+
+Hrms App
+	invoke the publisher
+		auto-raise / publish the message
+			OIC platform - IC Messaging platform
+				auto-deliver the message
+					sub1
+						invoke IT App -> generate a file on ftp
+					sub2
+						invoke Facilities App -> generate a file on ftp
+
+
+-------------------------------------------------
+Agent 
+On-premises communication
+retrieve emp details from a table from on-prem db
+
+creating 
+updating
+
+file adapter
+	read / write from on-prem file system
+
+creating suppliers on fusion app (saas)
+source data - onprem db
+fault mgmt
+
+------------------------------------------------
+9th July
+
+Agent
+Db Adapter
+File Adapter
+
+Enterprise (Intranet)
+	DB
+	Filesystem
+	Webservices
+	
+Oracle Cloud (Internet)
+	OIC
+	Fusion SaaS
+
+
+Agent
+	OIC - 
+		agent group
+
+	download the agent (zip file) from OIC
+	Setup agent in your local network (intranet/on-premesis)
+	Run the agent
+	
+	Integration
+		Connections
+		Db Adapter -> add agent group
+	
+	
+OIC				On-premesis
+				host1 (setup the agent)
+					db server
+				host2
+					db server2
+				host3
+					weblogic server
+				
+				
+Agent setup
+	java 8
+				
+Channel 
+	
+REST service
+SOAP service
+	WSDL
+	https://hostname1/fjdkfjk/wsdl
+
+
+Practices (file, db)
+---------------------
+1. Update the poprocessing to write processed order to a on-prem file
+2. Create integration
+	for reading the order file from on-prem file
+	process order
+
+3. On-prem folder has a list of files (orders) -> Assignment
+	Process each of them in single request
+	with the help of List files
+	
+
+4. On-prem folder has a list of files (orders)
+   Process each of them in single request
+   File Adapter
+		Poll read
+		
+5. Read employee details from on-prem database
+
+6. Create a new employee in on-prem employees table (assignment)
+
+7. Create one function in db
+	can take department_id as input
+	return number of employees as response.
+  execute that function from oic
+  
+8. Execute one function which can take department_id as input and return department_details as reponse - assignment
+		
+
+Setup
+jdk 1.8 only not below or above
+oracle db xe 
+should be able to run the agent
+	download the agent
+	configure
+	start the agent
+	
+
+
+https://cloud2-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+https://cloud3-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+https://cloud4-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+https://cloud5-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+https://cloud6-axwafokk5jbl-hy.integration.ocp.oraclecloud.com/ic/home/
+
+---------------------------------------------------------------------------------
+12th July 2021
+
+Local db table
+	list of suppliers (a few fields)
+	
+Create suppliers in fusion
+	SOAP service (fusion saas) - can accept one supplier per request
+	
+table details
+soap service (wsdl) - create supplier
+
+connections
+	db adapter connection to access the db - invoke
+	soap connection - create supplier - invoke
+	
+scheduled orchestration
+	
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+tSp9g#8?
+
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com/fscmService/SupplierServiceV2?WSDL
+
+
+Status
+	NR - Not ready
+	R - Ready
+	S - Successfully created in fusion
+	E - Error during creation in fusion
+	
+	
+Read the data from db table
+	select supplier details where status = 'R'
+	
+Iterate over the supplier list - using for loop
+	invoke create supplier opertaion using supplier service con
+	
+	/*query fusion to check whether the supplier is available or not
+	if yes
+		success
+	else
+		error */
+		
+	once created 
+		update the db - corresponding record with 'S'
+	
+2nd stage
+	if successfully created
+		update the db - corresponding record with 'S'
+	else
+		update the db - corresponding record with 'E'
+	
+statment1;
+
+try
+{	
+	try
+	{	
+		statement1_1;
+		statement2;(invoke)
+		statement3;
+		statement3_1;
+	}
+	catch(supplierTypeNotFoundEx s1)
+	{
+
+	}
+	catch(Exception e)
+	{
+		
+	}
+	
+	statement...
+	dgdf
+	dfgdf
+	
+
+}
+catch()
+{
+}
+
+
+statement4;
+
+
+
+WSDl
+	operation
+	
+operation speccific fault
+generic fault (default fault)	
+	
+	
+Practices
+1. Read suppliers from onprem db and create suppliers in fusion. Update db back with Success status
+2. Read suppliers from onprem db and create suppliers in fusion. 
+Update db back with Success/Error based on supplier creation status
+
+FTP:
+1.  csv file. Read all records from csv, create suppliers in fusion. 
+	if any error record is there, it will quit automatically from that record.
+
+2. 	csv file. Read all records from csv, create suppliers in fusion. 
+	Handle faults
+	in error case, just log a msg
+	
+3. csv file. Read all records from csv, create suppliers in fusion. 
+	Handle faults
+	create one file for success records, write it to ftp
+	create one file for error records, write it to ftp
+	
+-----------------------------------------------------------------
+13th July 2021
+
+Fault Handler
+	fault object
+
+
+
+invokex0
+
+Scope1
+
+	invokex1
+	
+	Scope11
+	
+	
+		invoke x11
+	
+	FH11
+	{
+		activity1
+		rethrow fault
+	
+	}
+
+	
+	Scope12
+	
+		invoke x12
+		
+		Scope121
+			invoke x121
+			
+		FH121
+		{
+			supressing
+		}
+		act....
+		
+	
+	FH12
+
+FH1
+{
+
+rethrow fault
+
+}
+
+
+
+instance_name
+instance_id
+
+fault error code
+fault reason
+fault details
+
+
+If the fault is not supressed, it will go to next level
+If the fault is suppressed compeltely, final status of integration will be Success
+Global fault will be executed only when the fault is not completely supressed in the integration
+Global fault, has access to fault object. If you want to use any object from the integration you have to use global variable
+
+
+
+suppliercollection
+	suppliers
+
+
+for loop
+current supplier
+
+indexVar = 0;
+
+suppliers[indexVar]
+
+indexVar = 0;
+flag =1
+
+while (flag!=0 and indexVar<20 )
+{
+.
+.
+.
+suppliers[indexVar]
+
+
+	if (.....)
+	{
+		flag = 0;
+	}
+
+}
+
+
+CROS
+
+Fusion REST services
+
+
+/fscmRestApi/resources/11.13.18.05/suppliers
+/fscmRestApi/resources/11.13.18.05/suppliers/{SupplierId}
+
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com/fscmRestApi/resources/latest/suppliers
+
+
+https://fa-eseb-saasfademo1.ds-fa.oraclepdemos.com/fscmRestApi/resources/latest/suppliers/{SupplierId}
+
+
+
+
+tSp9g#8?
+
+
+
+300000228546106
+300000220638647
+
+Practices
+--------------
+1. Build integration (wrapper get all suppliers rest service) for getting all the suppliers, 
+return the response in a trimmed json structure.
+
+2. Retrieving the suppliers from fusion and write them as XML on ftp (assignment)
+
+3. Enhance the first integration to accept a q parameter (assignment)
+	retrieve the suppliers where TaxOrganizationType != Corporation
+
+
+Build integration (wrapper get one suppliers rest service) for getting one supplier base on the supplierid, 
+return the response in a trimmed json structure.
+
+
+get suppliers - restservice
+expose as SOAP
+
+create supplier - soap -> wrapper service as REST
+
+OCI native services
+
+--------------------------------------------
+OCI Functions
+Docker image and Kubernetes- generic cocept
+OKE - Kubertenetes in OCI
+XSLT - how to use
+API gateway
+SpringBoot server
+Accessing Java from pl/sql
+File Transfer
+--------------------------------------------
+
+14th July 2021
+----------------------------------------
+
+Lookups
+
+
+Fusion Technical
+-----------------
+Reporting (BIP, OTBI)
+	OBIEE - generic technology
+
+FBDI (File based data import)
+	Bulk import
+
+UCM - File Import and Export
+
+Scheduled Processes
+
+-------------------------
+
+
+
+
+OBIEE
+	RPD (Modelling)
+		Subject Areas 
+	Analysis and Dashboards (OTBI) Oracle Transactional Business Intelligence
+	
+
+OTBI
+I. Create Analysis
+--------------
+1.Create Analysis by choosing a	Subject Area: General Ledger - Journals Realtime
+Create Criteria
+	Journal Batches -> Jorunal Source -> Journal User Source Name
+	Journal Lines
+		-> Journal Line Amounts
+			-> Total Account Credit
+			-> Total Accout Debit
+			
+2.Add Filter on a column to Prompt
+	Journal User Source Name
+3.Save Analysis
+
+II. Create Dashboard Prompt
+--------------------------
+1. Create Dashboard prompt by choosing the same subject area
+2. Save Dashboard Prompt
+
+III. Create Dashboard
+---------------------
+	Select the folder
+	Add Content
+	Drag Drop Dashboard prompt
+	Drag Drop Analysis
+	Save
+	Run
+	
+BI Report
+----------
+
+15th July 2021
+------------------------------------------------------
+ReportService -> Access the report from the integration
+
+https://fa-etap-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+pRa3R#4^
+
+https://fa-etap-saasfademo1.ds-fa.oraclepdemos.com/analytics/saw.dll?catalog
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+pRa3R#4^
+
+https://fa-etas-saasfademo1.ds-fa.oraclepdemos.com/xmlpserver/services/v2/ReportService?wsdl
+
+Invoices
+paramter - source
+invoice amount 
+
+run the BI report using SOAP service
+	pdf/excel/xml
+	
+generate a file on ftp with the output from the report.
+
+Report absolue path
+/Custom/Financials/abitInvoicesReport.xdo
+
+
+format
+path
+userid
+password
+listofparms
+	[name
+	value]
+	
+1. run report as pdf - generate a pdf file on ftp/onprem file system
+	query params for my integration as input
+	
+2. run report as pdf - generate a pdf file on ftp/onprem file system
+	input payload (supporting list of param values as well) for my integration as input
+	
+
+
+
+
+
+DATA MODEL Query
+=================
+SELECT
+1 KEY, 
+PARTY_ID,
+PARTY_NUMBER,
+PARTY_NAME,
+PARTY_TYPE,
+STATUS
+FROM
+HZ_PARTIES
+WHERE
+CREATION_DATE BETWEEN :P_FROM_DATE AND :P_TO_DATE
+AND PARTY_TYPE    = :P_PARTY_TYPE
+======================================================
+EMAIL Bursting Query
+======================================================
+SELECT DISTINCT
+ 1 AS "KEY",
+'Output'  TEMPLATE,
+ 'en-US'  LOCALE,
+ 'PDF'  OUTPUT_FORMAT,
+ 'CUSTOMER_INFORMATION'||'.pdf'  OUTPUT_NAME,
+ 'EMAIL'  DEL_CHANNEL,
+'aretimaheshkumar@gmail.com'     PARAMETER1,
+'aretimaheshkumar@gmail.com'     PARAMETER2,
+'no-reply@oracle.com'            PARAMETER3,
+'CUSTOMER INFORMATION'           PARAMETER4,
+'PLEASE FIND THE ATTACHED'       PARAMETER5,
+'TRUE'                           PARAMETER6,
+'DONOTREPLY@MYCOMPANY.COM'       PARAMETER7,
+'aretimaheshkumar@gmail.com'     PARAMETER8
+FROM DUAL
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Email
+PARAMETER1: Email address
+PARAMETER2: cc
+PARAMETER3: From
+PARAMETER4: Subject
+PARAMETER5: Message body
+PARAMETER6: Attachment value ('true' or 'false'). If your output format is PDF, you must set this parameter to "true" to attach the PDF to the e-mail.
+PARAMETER7: Reply-To
+PARAMETER8: Bcc (PARAMETER 9-10 are not used)
+==========================================================================================================================================================
+FTP Bursting Query
+==========================================================================================================================================================
+SELECT 1 AS                                                                                         "KEY",             ---Key
+       'Output'                                                                                     template,          ---Template Name
+       'en-US'                                                                                      locale,            ---Language
+       'TEXT'                                                                                       output_format,     ---Output Format
+       'FTP'                                                                                        del_channel,       ---Delivery Chanel
+       'RCBCTEST'                                                                                   parameter1,        ---Server name
+	   DECODE(:p_mode,'S','/Oracle Fusion/TEST/Integration/Outbound/ALM Processor/RCBCMASTERTBBWCR',
+	                      '/Oracle Fusion/TEST/Integration/Outbound/ALM Dw')                        parameter4,        ---FTP Path
+       'ORASC'||to_char(:p_date,'MMDD')||'.BTB'||'.txt'                                             parameter5,        ---Output File Name
+       'true'                                                                                       parameter6         ---Secured Format
+FROM   dual
+
+Burstin doc:
+https://docs.oracle.com/cd/E29542_01/bi.1111/e22258/add_burst_def.htm#BIPDM350
+-----------------------------------------------
+
+
+https://fa-etas-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+kND8j^8%
+
+-------------------------------------------------------------------------------
+16th July 2021
+
+3. run report as xml 
+	generate one separate file for each invoice record (xml/json)
+
+4. run report as xml  (assignment)
+	insert invoice records into a db table 
+	
+5. run report as xml  (assignment)
+	generate one separate file for each invoice record (xml/json)
+	where the inv amount > 10,000 (having a switch condition in the integ before writing to ftp)
+	
+	
+6. run report as xml  (assignment)
+	generate one separate file for each invoice record (xml/json)
+	where the inv amount > 10,000 (by using additional param p_amount)
+
+6. run report as xml  (assignment)
+   generate one file to ftp as json
+   
+	
+'/xmldir'
+'invreport.xml'
+	
+inv_<invnumber>.json
+	
+/Custom/Financials/bit/bitInvReport.xdo
+
+
+
+FBDI (File based data import)
+Scheduled processes
+File Import and Export
+
+
+FBDI
+-----
+Steps:
+Decide what data we need to import
+Refer the oracle documentation
+download fbdi template
+Prepare the data using the fbdi template
+Generate csv/zip file
+
+Upload the data file to UCM
+Run job
+	Select Job: Load Interface File for Import
+		Set Process: <Import and Calculate Daily Rates>
+		UCM File Name
+Submit Job
+Wait for completion of the job (Succeded/Error)	
+
+
+
+
+Purging the interface tables
+--------------------------------
+Process name: Purge Inteface Tables
+
+
+==========================
+
+supplier 
+
+csv file - ftp (supplier list)
+
+create them in fusion
+	using supplier soap service
+	
+generate two files (json)
+	list (array) of suppliers - created - suppliersCreated.json
+	list (array) of suppliers - failed -  suppliersFailed.json
+	
+create integrations1:writeSupplierListFtp
+	expose as rest
+	one way
+	ip: list of suppliers in json
+	result: write the list of suppliers to ftp into a single file (json)
+
+create integration2:createSuppliersFusion (main service)
+	read the data from ftp from csv
+	create suppiers in fusion using Supplier SOAP service
+	generate the successful and failed list using writeSupplierListFtp
+		list of suppliers - created - suppliersCreated.json
+		list of suppliers - failed  - suppliersFailed.json
+		(use writeSupplierListFtp to write successfull created suppliers and failed suppliers into two separate files)
+	
+https://fa-etaq-saasfademo1.ds-fa.oraclepdemos.com
+https://fa-etas-saasfademo1.ds-fa.oraclepdemos.com
+FIN_IMPL or HCM_IMPL or SCM_IMPL
+sXb4Y%6%	
+
+
+	https://fa-etaq-saasfademo1.ds-fa.oraclepdemos.com/fscmService/SupplierServiceV2?WSDL
+
+
+C:\Users\illapsr\Documents\Pavan_RepublicService\Oracle_Training\oic_conn_agent_installer>java -jar connectivityagent.jar
+
+
+
+760613/RECUR/RBRS670
+760606/ILLAPSR/QPADEV0009
+Job 760613/RECUR/RBRS670
+
+
+
+
+
+
+
+
+
+
+
+
